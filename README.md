@@ -33,7 +33,7 @@
 2. 其他语言数据（以英文为主）
 - wiki_en
 - openwebtext
-- c4 数据集
+- c4
 3. 代码数据
 为了能够提高模型的代码生成能力，我们添加了🤗开源的大量代码数据集
 - codeparrot/github-code-clean
