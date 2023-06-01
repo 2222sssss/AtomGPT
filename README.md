@@ -74,14 +74,14 @@ AtomGPT预训练模型使用transformers 直接加载就可以。4bit压缩模�
 
 模型名称|🤗模型加载名称|下载地址
 --|--|--
-AtomGPT_checkpoint_8k|AtomEchoAI/AtomGPT_checkpoint_8k|[模型下载](https://huggingface.co/AtomEchoAI/AtomGPT_checkpoint_8k)
+AtomGPT_checkpoint_8k|AtomEchoAI/AtomGPT_checkpoint_8k|[模型下载（正在准备）](https://huggingface.co/AtomEchoAI/AtomGPT_checkpoint_8k)
 
 ### chat模型
 AtomGPT-chat模型需要使用transformers进行加载。4bit压缩版本模型需要使用[AutoGPTQ](https://github.com/PanQiWei/AutoGPTQ/blob/main/README_zh.md)进行加载
 
 模型名称|🤗模型加载名称|下载地址
 --|--|--
-AtomGPT_checkpoint_8k_chat|AtomEchoAI/AtomGPT_checkpoint_8k_chat|[模型下载](https://huggingface.co/AtomEchoAI/AtomGPT_checkpoint_8k_chat)
+AtomGPT_checkpoint_8k_chat|AtomEchoAI/AtomGPT_checkpoint_8k_chat|[模型下载（正在准备）](https://huggingface.co/AtomEchoAI/AtomGPT_checkpoint_8k_chat)
 
 ## 本地推理与快速部署
 
@@ -101,16 +101,37 @@ python example/atomgpt_chat.py --model_name_or_path AtomEchoAI/AtomGPT_checkpoin
 
 ### docker部署问答接口
 
+正在准备
+
 ### transformers调用代码示例
 
 ```
-from transformers import 
+from transformers import AutoTokenizer, AutoModelForCausalLM
+model = AutoModelForCausalLM.from_pretrained('AtomEchoAI/AtomGPT_checkpoint_8k_chat',device_map='auto',torch_dtype=torch.float16,load_in_8bit=True)
+model =model.eval()
+tokenizer = AutoTokenizer.from_pretrained('AtomEchoAI/AtomGPT_checkpoint_8k_chat',use_fast=False)
+input_ids = tokenizer(['<s>Human: 介绍一下北京\n</s><s>Assistant: '], return_tensors="pt",add_special_tokens=False).input_ids.to('cuda')        
+generate_input = {
+    "input_ids":input_ids,
+    "max_new_tokens":512,
+    "do_sample":True,
+    "top_k":50,
+    "top_p":0.95,
+    "temperature":0.3,
+    "repetition_penalty":1.3,
+    "eos_token_id":tokenizer.eos_token_id,
+    "bos_token_id":tokenizer.bos_token_id,
+    "pad_token_id":tokenizer.pad_token_id
+}
+generate_ids  = model.generate(**generate_input)
+text = tokenizer.decode(generate_ids[0])
+print(text)
 ```
 
 ## 常见问题列表
 1. huggingface 上模型下载较慢？
 
-· 我们提供位于中国国内的下载位置：
+· 我们提供位于中国国内的下载位置：正在准备
 
 ## 局限性
 虽然本项目中的模型具备一定的中文理解和生成能力，但也存在局限性，包括但不限于：
