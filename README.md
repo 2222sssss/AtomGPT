@@ -1,5 +1,7 @@
 # AtomGPT （正在编辑中）
-为了能够在中文上训练出一个能够和ChatGPT能力接近的中文大模型，我们开放了AtomGPT项目，AtomGPT基于LLaMA的模型架构，从0开始训练，希望能在训练的过程中，将模型能力得到提升的进化过程展示出来，感受到模型学习的过程。
+为了能够在中文上训练出一个能够和ChatGPT能力接近的中文大模型，我们开放了AtomGPT项目
+
+AtomGPT基于LLaMA的模型架构，从0开始训练，希望能在训练的过程中，将模型能力得到提升的进化过程展示出来，感受到模型学习的过程。
 ## 模型在线体验平台
 能够更加直观可视化出模型训练的过程中模型能力的变化，以及方便进行测试，我们搭建了AtomGPT模型成长平台。
 
@@ -23,7 +25,9 @@
 
 
 ## 训练细节
-我们基于transformers实现的LLaMA模型代码，参考meta开源的13B的模型配置，作为实现AtomGPT的开始。训练过程中使用了10台8卡A100的机器，在bf16的精度上，进行了全量参数微调。
+我们基于transformers实现的LLaMA模型代码，参考meta开源的13B的模型配置，作为实现AtomGPT的开始。训练过程中使用了10台8卡A100的机器，在bf16的精度上，进行了预训练的过程。
+
+该过程持续进行中……
 数据来源方面，主要包含以下几方面的数据。
 1. 中文数据
 中文数据作为了预训练的主要数据部分，主要来源有以下几个部分
@@ -56,14 +60,14 @@ AtomGPT预训练模型使用transformers 直接加载就可以。4bit压缩模�
 
 模型名称|🤗模型加载名称|下载地址
 --|--|--
-atomgpt-checkpoint-10k|atomgptai/atomgpt_checkpoint_10k|[模型下载](https://huggingface.co/AtomEchoAI/AtomGPT)
+AtomGPT_checkpoint_8k|AtomEchoAI/AtomGPT_checkpoint_8k|[模型下载](https://huggingface.co/AtomEchoAI/AtomGPT_checkpoint_8k)
 
 ### chat模型
 AtomGPT-chat模型需要使用transformers进行加载。4bit压缩版本模型需要使用[AutoGPTQ](https://github.com/PanQiWei/AutoGPTQ/blob/main/README_zh.md)进行加载
 
 模型名称|🤗模型加载名称|下载地址
 --|--|--
-atomgpt-checkpoint-10k-chat|atomgptai/atomgpt_checkpoint_10k-chat|[模型下载](https://huggingface.co/AtomEchoAI/AtomGPT)
+AtomGPT_checkpoint_8k_chat|AtomEchoAI/AtomGPT_checkpoint_8k_chat|[模型下载](https://huggingface.co/AtomEchoAI/AtomGPT_checkpoint_8k_chat)
 
 ## 本地推理与快速部署
 
