@@ -1,7 +1,7 @@
 <h1 align="center">AtomGPT（正在编辑中）</h1>
 <h4 align="center">
     <p>
-        <a href="https://github.com/AtomEcho/AtomGPT/blob/main/README.md">English</a> |
+        <a href="https://github.com/AtomEcho/AtomGPT/blob/main/README_EN.md">English</a> |
         <b>中文</b>
     <p>
 </h4>
