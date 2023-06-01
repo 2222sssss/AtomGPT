@@ -16,7 +16,7 @@ AtomGPT基于LLaMA的模型架构，从0开始训练，希望能在训练的过�
 
 体验地址：[https://grow.atomecho.cn/](https://grow.atomecho.cn/)
 
-<img src="./chat/chatbelle-demo.gif"></img>
+<img src="./assets/demo.gif"></img>
 
 ## 最新更新
 
