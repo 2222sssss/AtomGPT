@@ -18,19 +18,20 @@ AtomGPT基于LLaMA的模型架构，从0开始训练，希望能在训练的过�
 
 <img src="./assets/demo.gif"></img>
 
-## 最新更新
+## 最近更新
 
-### 新闻动态
+### 动态
 
+- 2023.06.01 儿童节快乐，我们开始将我们的模型推送到🤗model hub。
 - 2023.05.13 进行了模型训练的第一次点火测试。
 - 2023.04.28 我们决定了要训练出一个能够与ChatGPT能力接近的中文大模型。
 
 ### 预训练模型更新
-- 2023.06.01 
+- 2023.06.01 开放出预训练第8000步的模型
 
 
 ### chat模型更新
-- 2023.06.01 
+- 2023.06.01 开放出在第8000步的预训练模型基础上，通过lora进行指令微调的单轮对话模型
 
 
 ## 训练细节
@@ -63,7 +64,7 @@ AtomGPT基于LLaMA的模型架构，从0开始训练，希望能在训练的过�
 - Bigcode-the-stack-dedup
 
 4. 持续更新
-希望大家如果有较高质量的数据集能够提供给我们，不胜感激
+- 希望大家如果有较高质量的数据集能够提供给我们，不胜感激
 
 ## 模型下载
 可以在🤗Model Hub下载以下所有模型
@@ -94,7 +95,7 @@ AtomGPT_checkpoint_8k_chat|AtomEchoAI/AtomGPT_checkpoint_8k_chat|[模型下载�
 
 ### gradio快速搭建问答平台
 
-基于gradio搭建的问答界面，实现了流式的输出
+基于gradio搭建的问答界面，实现了流式的输出。4bit 版本目前只支持路径加载
 ```
 python example/atomgpt_chat.py --model_name_or_path AtomEchoAI/AtomGPT_checkpoint_8k_chat
 ```
@@ -104,11 +105,34 @@ python example/atomgpt_chat.py --model_name_or_path AtomEchoAI/AtomGPT_checkpoin
 正在准备
 
 ### transformers调用代码示例
-
+#### 8bit版本
 ```
 from transformers import AutoTokenizer, AutoModelForCausalLM
 model = AutoModelForCausalLM.from_pretrained('AtomEchoAI/AtomGPT_checkpoint_8k_chat',device_map='auto',torch_dtype=torch.float16,load_in_8bit=True)
 model =model.eval()
+tokenizer = AutoTokenizer.from_pretrained('AtomEchoAI/AtomGPT_checkpoint_8k_chat',use_fast=False)
+input_ids = tokenizer(['<s>Human: 介绍一下北京\n</s><s>Assistant: '], return_tensors="pt",add_special_tokens=False).input_ids.to('cuda')        
+generate_input = {
+    "input_ids":input_ids,
+    "max_new_tokens":512,
+    "do_sample":True,
+    "top_k":50,
+    "top_p":0.95,
+    "temperature":0.3,
+    "repetition_penalty":1.3,
+    "eos_token_id":tokenizer.eos_token_id,
+    "bos_token_id":tokenizer.bos_token_id,
+    "pad_token_id":tokenizer.pad_token_id
+}
+generate_ids  = model.generate(**generate_input)
+text = tokenizer.decode(generate_ids[0])
+print(text)
+```
+#### 4bit版本
+```
+from transformers import AutoTokenizer
+from auto_gptq import AutoGPTQForCausalLM
+model = AutoGPTQForCausalLM.from_quantized(args.model_name_or_path,low_cpu_mem_usage=True, device="cuda:0", use_triton=True,inject_fused_attention=False,inject_fused_mlp=False)
 tokenizer = AutoTokenizer.from_pretrained('AtomEchoAI/AtomGPT_checkpoint_8k_chat',use_fast=False)
 input_ids = tokenizer(['<s>Human: 介绍一下北京\n</s><s>Assistant: '], return_tensors="pt",add_special_tokens=False).input_ids.to('cuda')        
 generate_input = {
@@ -140,6 +164,8 @@ print(text)
 - 由于算力和数据问题，相关模型的训练并不充分，中文理解能力有待进一步提升
 
 ## 致谢
+
+正在准备
 
 ## 免责声明
 本项目遵循apache-2.0的开源协议。使用涉及第三方代码的部分时，请严格遵循相应的开源协议。模型生成的内容受模型计算、随机性和量化精度损失等因素影响，本项目不对其准确性作出保证。对于模型输出的任何内容，本项目不承担任何法律责任，亦不对因使用相关资源和输出结果而可能产生的任何损失承担责任。
