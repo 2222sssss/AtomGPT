@@ -77,7 +77,7 @@ with gr.Blocks() as demo:
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--model_name_or_path", type=str, default='')
+    parser.add_argument("--model_name_or_path", type=str, help='4bit model only support path')
     args = parser.parse_args()
     tokenizer = AutoTokenizer.from_pretrained(args.model_name_or_path,use_fast=False)
     
