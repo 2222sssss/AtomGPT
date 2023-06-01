@@ -1,4 +1,4 @@
-<h1 align="center">AtomGPT（正在编辑中）</h1>
+<h1 align="center">AtomGPT</h1>
 <h4 align="center">
     <p>
         <b >English</b> |
