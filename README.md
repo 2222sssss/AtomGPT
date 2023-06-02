@@ -175,3 +175,5 @@ print(text)
 在提交问题之前，请先查看FAQ能否解决问题，同时建议查阅以往的issue是否能解决你的问题。
 
 礼貌地提出问题，构建和谐的讨论社区。
+
+[![Star History Chart](https://api.star-history.com/svg?repos=AtomEcho/AtomGPT&type=Date)](https://star-history.com/#AtomEcho/AtomGPT&Date)
