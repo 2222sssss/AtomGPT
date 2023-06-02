@@ -132,7 +132,7 @@ print(text)
 ```
 from transformers import AutoTokenizer
 from auto_gptq import AutoGPTQForCausalLM
-model = AutoGPTQForCausalLM.from_quantized(args.model_name_or_path,low_cpu_mem_usage=True, device="cuda:0", use_triton=True,inject_fused_attention=False,inject_fused_mlp=False)
+model = AutoGPTQForCausalLM.from_quantized(args.model_name_or_path, device="cuda:0")
 tokenizer = AutoTokenizer.from_pretrained('AtomEchoAI/AtomGPT_checkpoint_8k_chat',use_fast=False)
 input_ids = tokenizer(['<s>Human: 介绍一下北京\n</s><s>Assistant: '], return_tensors="pt",add_special_tokens=False).input_ids.to('cuda')        
 generate_input = {
