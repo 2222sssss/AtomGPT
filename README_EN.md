@@ -74,14 +74,14 @@ Download all models below on 🤗Model Hub
 
 ### Pre-training model
 
-AtomGPT pre-training model can be used with Transformers directly loaded. 4-bit compressed models require loading [AutoGPTQ] (https://github.com/PanQiWei/AutoGPTQ/blob/main/README.md) for loading
+AtomGPT pre-training model can be used with Transformers directly loaded. 4-bit compressed models require loading [AutoGPTQ](https://github.com/PanQiWei/AutoGPTQ/blob/main/README.md) for loading
 
 Model Name |🤗 Model Loading Name |Download Link
 --|--|--
 AtomGPT_8k|AtomEchoAI/AtomGPT_8k|[Model download](https://huggingface.co/AtomEchoAI/AtomGPT_8k)
 
 ### chat model
-AtomGPT-chat model can be used with Transformers directly loaded. 4-bit compressed models require loading [AutoGPTQ] (https://github.com/PanQiWei/AutoGPTQ/blob/main/README.md) for loading
+AtomGPT-chat model can be used with Transformers directly loaded. 4-bit compressed models require loading [AutoGPTQ](https://github.com/PanQiWei/AutoGPTQ/blob/main/README.md) for loading
 
 Model Name |🤗 Model Loading Name |Download Link
 --|--|--
@@ -178,7 +178,7 @@ In preparation
 ## Disclaimer
 This project is based on the Apache 2.0 open source license. When using third-party code, please strictly follow the relevant open source agreements accordingly. The generated content of models may be affected by factors such as model calculation, randomness and quantization loss, etc., and this project does not guarantee its accuracy. Any output from the related resources and results are subject to legal liability for which the project shall bear no responsibility nor assume any obligation arising therefrom or in connection thereto.
 
-## 问题反馈
+## Feedback on problems
 If you have any problems, please file an issue on GitHub. Or add the developer’s WeChat ID (zhangzheng-thu) to your contact list and send a message with details of your problem
 
 Before filing issues, please check if FAQ can solve your problem first. It is also recommended that you review past issues for solutions to similar problems.
