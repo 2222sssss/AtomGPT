@@ -9,6 +9,8 @@
 
 AtomGPT基于LLaMA的模型架构，从0开始训练，希望能在训练的过程中，将模型能力得到提升的进化过程展示出来，感受到模型学习的过程。
 
+(ps:各位大佬，如果本项目能给您带来一点点帮助，麻烦点个⭐️吧)
+
 ## 模型在线体验平台
 能够更加直观可视化出模型训练的过程中模型能力的变化，以及方便进行测试，我们搭建了AtomGPT模型成长平台。
 
@@ -75,7 +77,7 @@ AtomGPT预训练模型使用transformers 直接加载就可以。4bit压缩模�
 
 模型名称|🤗模型加载名称|下载地址
 --|--|--
-AtomGPT_8k|AtomEchoAI/AtomGPT_8k|[模型下载(正在准备)](https://huggingface.co/AtomEchoAI/AtomGPT_8k)
+AtomGPT_8k|AtomEchoAI/AtomGPT_8k|[模型下载](https://huggingface.co/AtomEchoAI/AtomGPT_8k)
 
 ### chat模型
 AtomGPT-chat模型需要使用transformers进行加载。4bit压缩版本模型需要使用[AutoGPTQ](https://github.com/PanQiWei/AutoGPTQ/blob/main/README_zh.md)进行加载
@@ -95,9 +97,14 @@ AtomGPT_8k_chat_4bit|AtomEchoAI/AtomGPT_8k_chat_4bit|[模型下载](https://hugg
 
 ### gradio快速搭建问答平台
 
-基于gradio搭建的问答界面，实现了流式的输出。4bit 版本目前只支持路径加载
+基于gradio搭建的问答界面，实现了流式的输出。
 ```
 python example/atomgpt_chat.py --model_name_or_path AtomEchoAI/AtomGPT_checkpoint_8k_chat
+```
+4bit模型加载如要 --is_4bit
+
+```
+python example/atomgpt_chat.py --model_name_or_path AtomEchoAI/AtomGPT_8k_chat_4bit --is_4bit
 ```
 
 ### docker部署问答接口

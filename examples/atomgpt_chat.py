@@ -77,16 +77,17 @@ with gr.Blocks() as demo:
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--model_name_or_path", type=str, help='4bit model only support path')
+    parser.add_argument("--model_name_or_path", type=str, help='mode name or path')
+    parser.add_argument("--is_4bit", action='store_true', help='use 4bit model')
     args = parser.parse_args()
     tokenizer = AutoTokenizer.from_pretrained(args.model_name_or_path,use_fast=False)
     
-    if os.path.exists(os.path.join(args.model_name_or_path,'gptq_model-4bit-128g.bin'))==False:
+    if args.is_4bit==False:
         model = AutoModelForCausalLM.from_pretrained(args.model_name_or_path,device_map='auto',torch_dtype=torch.float16,load_in_8bit=True)
         model.eval()
     else:
         from auto_gptq import AutoGPTQForCausalLM
-        model = AutoGPTQForCausalLM.from_quantized(args.model_name_or_path,low_cpu_mem_usage=True, device="cuda:0", use_triton=True,inject_fused_attention=False,inject_fused_mlp=False)
+        model = AutoGPTQForCausalLM.from_quantized(args.model_name_or_path,low_cpu_mem_usage=True, device="cuda:0", use_triton=False,inject_fused_attention=False,inject_fused_mlp=False)
     streamer = TextIteratorStreamer(tokenizer,skip_prompt=True)
     if torch.__version__ >= "2" and sys.platform != "win32":
         model = torch.compile(model)
