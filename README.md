@@ -162,6 +162,12 @@ generate_ids  = model.generate(**generate_input)
 text = tokenizer.decode(generate_ids[0])
 print(text)
 ```
+## TODO
+1. 添加模型的工具学习能力，开源AtomGPT-tools
+2. 添加人工反馈进reward，提升chat模型的稳定性
+3. 个性化微调平台，制作定制化的数字分身
+4. 强化逻辑推理能力
+
 
 ## 常见问题列表
 1. huggingface 上模型下载较慢？
