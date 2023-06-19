@@ -24,19 +24,19 @@ AtomGPT基于LLaMA的模型架构，从0开始训练，希望能在训练的过�
 
 ### 动态
 
-- 2023.06.13 添加了示例gunicorn server 的示例代码
+- 2023.06.13 更新了新版本的chat模型，新版本的能力有了较大的提升，欢迎大家测试。此外，添加了示例gunicorn server 的示例代码
 - 2023.06.09 添加支持langchain的llm实现
 - 2023.06.01 儿童节快乐，我们开始将我们的模型推送到🤗model hub。
 - 2023.05.13 进行了模型训练的第一次点火测试。
 - 2023.04.28 我们决定了要训练出一个能够与ChatGPT能力接近的中文大模型。
 
 ### 预训练模型更新
+- 2023.06.14 开放出预训练第14000步的模型（正在上传）
 - 2023.06.01 开放出预训练第8000步的模型
 
-
 ### chat模型更新
+- 2023.06.13 开放出在第14000步的预训练模型基础上，通过lora进行指令微调的单轮对话模型（也有一定的多轮对话能力）
 - 2023.06.01 开放出在第8000步的预训练模型基础上，通过lora进行指令微调的单轮对话模型
-
 
 ## 训练细节
 我们基于transformers实现的LLaMA模型代码，参考meta开源的13B的模型配置，作为实现AtomGPT的开始。训练过程中使用了10台8卡A100的机器，在bf16的精度上，进行了预训练的过程。
@@ -80,6 +80,7 @@ AtomGPT预训练模型使用transformers 直接加载就可以。4bit压缩模�
 模型名称|🤗模型加载名称|下载地址
 --|--|--
 AtomGPT_8k|AtomEchoAI/AtomGPT_8k|[模型下载](https://huggingface.co/AtomEchoAI/AtomGPT_8k)
+AtomGPT_14k|AtomEchoAI/AtomGPT_14k|[模型下载（正在准备中）](https://huggingface.co/AtomEchoAI/AtomGPT_14k)
 
 ### chat模型
 AtomGPT-chat模型需要使用transformers进行加载。4bit压缩版本模型需要使用[AutoGPTQ](https://github.com/PanQiWei/AutoGPTQ/blob/main/README_zh.md)进行加载
@@ -88,6 +89,7 @@ AtomGPT-chat模型需要使用transformers进行加载。4bit压缩版本模型�
 --|--|--
 AtomGPT_8k_chat|AtomEchoAI/AtomGPT_8k_chat|[模型下载](https://huggingface.co/AtomEchoAI/AtomGPT_8k_chat)
 AtomGPT_8k_chat_4bit|AtomEchoAI/AtomGPT_8k_chat_4bit|[模型下载](https://huggingface.co/AtomEchoAI/AtomGPT_8k_chat_4bit)
+AtomGPT_14k_chat_4bit|AtomEchoAI/AtomGPT_14k_chat_4bit|[模型下载](https://huggingface.co/AtomEchoAI/AtomGPT_14k_chat_4bit)
 ## 本地推理与快速部署
 
 ### 推理硬件要求
@@ -160,6 +162,14 @@ generate_ids  = model.generate(**generate_input)
 text = tokenizer.decode(generate_ids[0])
 print(text)
 ```
+## TODO
+1. 添加模型的工具学习能力，开源AtomGPT-tools
+2. 添加人工反馈进reward，提升chat模型的稳定性
+3. 个性化微调平台，制作定制化的数字分身
+4. 添加多模态能力，为模型添加眼睛和耳朵
+5. 增加模型的context长度，例如采用pcw等方法
+6. 强化逻辑推理能力
+
 
 ## 常见问题列表
 1. huggingface 上模型下载较慢？
