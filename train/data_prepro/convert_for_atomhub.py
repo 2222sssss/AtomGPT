@@ -20,20 +20,31 @@ def convert_to_formatted_list(file_path):
             content = dialog["content"]
             text += f"<s>{role}: {content}\n</s>"
 
-        human_label_message = item["human_label_message"][0]["content"]
-        text += f"<s>Assistant: {human_label_message}\n</s>"
+        for item_human in item["human_label_message"]:
+            human_label_message = item_human["content"]
+            if len(human_label_message)>0:
+                all_text =text+ f"<s>Assistant: {human_label_message}\n</s>"
+                dialog_dict = {
+                    "text": all_text
+                }
+                dialogues.append(dialog_dict)
+        for item_good in item["good_label_message"]:
+            good_label_message = item_good["content"]
+            if len(good_label_message)>0:
+                all_text =text+ f"<s>Assistant: {good_label_message}\n</s>"
+                dialog_dict = {
+                    "text": all_text
+                }
+                dialogues.append(dialog_dict)
 
-        dialog_dict = {
-            "text": text
-        }
-        dialogues.append(dialog_dict)
-
+        
+        
     return dialogues
 
 
 def convert_list_to_csv(dialogues, csv_file_path):
     df = pd.DataFrame(dialogues)
-    df.to_csv(csv_file_path, index=False)
+    df.to_csv(csv_file_path, index=False,quoting=1)
 
 def split_data(num_dev, dialogues):
     random.shuffle(dialogues)  # 随机打乱列表顺序
