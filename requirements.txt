@@ -1,0 +1,9 @@
+bitsandbytes==0.39.0
+transformers
+peft
+accelerate
+deepspeed
+git+https://github.com/PanQiWei/AutoGPTQ.git
+scipy
+sentencepiece
+datasets

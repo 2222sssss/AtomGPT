@@ -1,7 +1,0 @@
-bitsandbytes==0.39.0 --upgrade -i https://pypi.org/simple
-transformers --upgrade -i https://pypi.org/simple
-peft --upgrade -i https://pypi.org/simple
-accelerate --upgrade -i https://pypi.org/simple
-deepspeed --upgrade -i https://pypi.org/simple
-git+https://github.com/PanQiWei/AutoGPTQ.git
-scipy sentencepiece datasets
