@@ -28,14 +28,16 @@ def convert_to_formatted_list(file_path):
                     "text": all_text
                 }
                 dialogues.append(dialog_dict)
-        for item_good in item["good_label_message"]:
-            good_label_message = item_good["content"]
-            if len(good_label_message)>0:
-                all_text =text+ f"<s>Assistant: {good_label_message}\n</s>"
-                dialog_dict = {
-                    "text": all_text
-                }
-                dialogues.append(dialog_dict)
+        
+        if len(item["human_label_message"])==0:
+            for item_good in item["good_label_message"]:
+                good_label_message = item_good["content"]
+                if len(good_label_message)>0:
+                    all_text =text+ f"<s>Assistant: {good_label_message}\n</s>"
+                    dialog_dict = {
+                        "text": all_text
+                    }
+                    dialogues.append(dialog_dict)
 
         
         
