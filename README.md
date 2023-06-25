@@ -80,7 +80,7 @@ AtomGPT预训练模型使用transformers 直接加载就可以。4bit压缩模�
 模型名称|🤗模型加载名称|下载地址
 --|--|--
 AtomGPT_8k|AtomEchoAI/AtomGPT_8k|[模型下载](https://huggingface.co/AtomEchoAI/AtomGPT_8k)
-AtomGPT_14k|AtomEchoAI/AtomGPT_14k|[模型下载（当前上传到hub 上的模型不完整）](https://huggingface.co/AtomEchoAI/AtomGPT_14k)
+AtomGPT_14k|AtomEchoAI/AtomGPT_14k|[模型下载](https://huggingface.co/AtomEchoAI/AtomGPT_14k)
 
 ### chat模型
 AtomGPT-chat模型需要使用transformers进行加载。4bit压缩版本模型需要使用[AutoGPTQ](https://github.com/PanQiWei/AutoGPTQ/blob/main/README_zh.md)进行加载
