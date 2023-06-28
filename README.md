@@ -24,6 +24,7 @@ AtomGPT基于LLaMA的模型架构，从0开始训练，希望能在训练的过�
 
 ### 动态
 
+- 2023.06.28 添加了sft的训练脚本以及示例的数据
 - 2023.06.13 更新了新版本的chat模型，新版本的能力有了较大的提升，欢迎大家测试。此外，添加了示例gunicorn server 的示例代码
 - 2023.06.09 添加支持langchain的llm实现
 - 2023.06.01 儿童节快乐，我们开始将我们的模型推送到🤗model hub。
@@ -116,8 +117,7 @@ AtomGPT_14k_chat_4bit|AtomEchoAI/AtomGPT_14k_chat_4bit|[模型下载](https://hu
 
 ### 微调脚本
 
-[train/sft/finetune_other.sh](https://github.com/AtomEcho/AtomGPT/blob/main/train/sft/finetune_other.sh)，通过修改改脚本的部分参数实现模型的微调
-
+[train/sft/finetune_other.sh](https://github.com/AtomEcho/AtomGPT/blob/main/train/sft/finetune_other.sh)，通过修改脚本的部分参数实现模型的微调
 
 
 ## 本地推理与快速部署
