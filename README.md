@@ -90,6 +90,36 @@ AtomGPT-chat模型需要使用transformers进行加载。4bit压缩版本模型�
 AtomGPT_8k_chat|AtomEchoAI/AtomGPT_8k_chat|[模型下载](https://huggingface.co/AtomEchoAI/AtomGPT_8k_chat)
 AtomGPT_8k_chat_4bit|AtomEchoAI/AtomGPT_8k_chat_4bit|[模型下载](https://huggingface.co/AtomEchoAI/AtomGPT_8k_chat_4bit)
 AtomGPT_14k_chat_4bit|AtomEchoAI/AtomGPT_14k_chat_4bit|[模型下载](https://huggingface.co/AtomEchoAI/AtomGPT_14k_chat_4bit)
+
+## 模型微调
+
+本仓库中提供了简单的基于 lora 的微调代码
+
+### 环境准备
+
+根据[requirements.txt](https://github.com/AtomEcho/AtomGPT/blob/main/requirements.txt)安装对应的环境依赖
+
+### 数据准备
+
+在data/下提供了一份用于做模型sft的数据样例
+
+#### 问答的问题和答案都加入到sft训练中
+该数据只有一列
+- 训练数据：data/train_sft.csv
+- 验证数据：data/dev_sft.csv
+
+#### 问答的仅答案部分加入到sft训练中
+该数据有两列，第一列为输入，第二列为输出，即把dev_sft.csv中的一列的数据分成两部分
+
+- 待提供
+
+
+### 微调脚本
+
+[train/sft/finetune_other.sh](https://github.com/AtomEcho/AtomGPT/blob/main/train/sft/finetune_other.sh)，通过修改改脚本的部分参数实现模型的微调
+
+
+
 ## 本地推理与快速部署
 
 ### 推理硬件要求
@@ -116,6 +146,7 @@ python example/atomgpt_chat.py --model_name_or_path AtomEchoAI/AtomGPT_8k_chat_4
 正在准备
 
 ### transformers调用代码示例
+
 #### 8bit版本
 ```
 from transformers import AutoTokenizer, AutoModelForCausalLM

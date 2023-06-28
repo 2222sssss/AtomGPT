@@ -5,8 +5,8 @@ fi
 cp ./finetune_other.sh ${output_model}
 deepspeed --include localhost:3 --master_port 29506 finetune_clm_lora.py \
     --model_name_or_path AtomEchoAI/AtomGPT_14k \
-    --train_files train.csv \
-    --validation_files  dev.csv \
+    --train_files ../data/train_sft.csv \
+    --validation_files  ../data/dev_sft.csv \
     --per_device_train_batch_size 1 \
     --per_device_eval_batch_size 1 \
     --do_train \
