@@ -67,6 +67,8 @@ from transformers.trainer_utils import get_last_checkpoint
 from transformers.utils import check_min_version, send_example_telemetry
 from transformers.utils.versions import require_version
 
+import pdb
+
 
 # Will error if the minimal version of Transformers is not installed. Remove at your own risks.
 # check_min_version("4.27.0.dev0")
@@ -270,6 +272,7 @@ def main():
     # We now keep distinct sets of args, for a cleaner separation of concerns.
 
     parser = HfArgumentParser((ModelArguments, DataTrainingArguments, TrainingArguments))
+    # pdb.set_trace()
     if len(sys.argv) == 2 and sys.argv[1].endswith(".json"):
         # If we pass only one argument to the script and it's the path to a json file,
         # let's parse it to get our arguments.
@@ -578,19 +581,24 @@ def main():
             preds, labels = eval_preds
             # preds have the same shape as the labels, after the argmax(-1) has been calculated
             # by preprocess_logits_for_metrics but we need to shift the labels
-            
             labels = labels[:, 1:].reshape(-1)
+            # .reshape(-1)
             preds = preds[:, :-1].reshape(-1)
-            true_predictions = [
-                [p for (p, l) in zip(pred, gold_label) if l != -100]
-                for pred, gold_label in zip(preds, labels)
-            ]
-            true_labels = [
-                [l for (p, l) in zip(pred, gold_label) if l != -100]
-                for pred, gold_label in zip(preds, labels)
-            ]
-            return metric.compute(predictions=true_predictions, references=true_labels)
+            # .reshape(-1)
+            # print(labels.shape)
+            # true_predictions = [
+            #     [p for (p, l) in zip(pred, gold_label) if l != -100]
+            #     for pred, gold_label in zip(preds, labels)
+            # ]
+            # true_labels = [
+            #     [l for (p, l) in zip(pred, gold_label) if l != -100]
+            #     for pred, gold_label in zip(preds, labels)
+            # ]            
+            # preds = np.array(true_predictions).reshape(-1)
+            # labels = np.array(true_labels).reshape(-1)
+            return metric.compute(predictions=preds, references=labels)
         # layer_norm_names=[]
+
                 
     
     model = get_peft_model(model, lora_config)
