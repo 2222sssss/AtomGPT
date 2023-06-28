@@ -22,6 +22,8 @@ def convert_to_formatted_list(file_path):
 
         for item_human in item["human_label_message"]:
             human_label_message = item_human["content"]
+            human_label_message = human_label_message.replace('\n\n','\n')
+            human_label_message = human_label_message.replace('\n','\n\n').strip()
             if len(human_label_message)>0:
                 all_text =text+ f"<s>Assistant: {human_label_message}\n</s>"
                 dialog_dict = {
@@ -32,6 +34,8 @@ def convert_to_formatted_list(file_path):
         if len(item["human_label_message"])==0:
             for item_good in item["good_label_message"]:
                 good_label_message = item_good["content"]
+                good_label_message = good_label_message.replace('\n\n','\n')
+                good_label_message = good_label_message.replace('\n','\n\n').strip()
                 if len(good_label_message)>0:
                     all_text =text+ f"<s>Assistant: {good_label_message}\n</s>"
                     dialog_dict = {
