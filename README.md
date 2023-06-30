@@ -198,7 +198,7 @@ print(text)
 2. 添加人工反馈进reward，提升chat模型的稳定性
 3. 个性化微调平台，制作定制化的数字分身
 4. 添加多模态能力，为模型添加眼睛和耳朵
-5. 增加模型的context长度，例如采用pcw等方法
+5. 增加模型的context长度，例如采用pcw等方法，目前来看 [https://arxiv.org/pdf/2306.15595.pdf](https://arxiv.org/pdf/2306.15595.pdf) 性价比比较高
 6. 强化逻辑推理能力
 
 
