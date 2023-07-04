@@ -11,9 +11,6 @@ def convert_to_formatted_list(file_path):
     for item in data:
         system_prefix = item["system_prefix"]
         text = ""
-        if system_prefix:
-            text += f"<s>System: {system_prefix}\n</s>"
-
         history_dialogue = item["input_message"]
         for dialog in history_dialogue:
             role = dialog["role"]
@@ -25,11 +22,27 @@ def convert_to_formatted_list(file_path):
             human_label_message = human_label_message.replace('\n\n','\n')
             human_label_message = human_label_message.replace('\n','\n\n').strip()
             if len(human_label_message)>0:
-                all_text =text+ f"<s>Assistant: {human_label_message}\n</s>"
-                dialog_dict = {
-                    "text": all_text
-                }
-                dialogues.append(dialog_dict)
+                if args.split_input_target:
+                    input_text = text+ "<s>Assistant: "
+                    target_text = human_label_message.strip()+'\n</s>'
+                    input_text = input_text[-1526:]
+                    if system_prefix:
+                        input_text =  f"<s>System: {system_prefix}\n</s>" + input_text
+                    dialog_dict = {
+                        "input": input_text,
+                        "target": target_text
+                    }
+                    dialogues.append(dialog_dict)
+                else:
+                    text_all =text+ f"<s>Assistant: {human_label_message.strip()}\n</s>"
+                    text_all = text_all[-1526:]
+                    if system_prefix:
+                        text_all =  f"<s>System: {system_prefix}\n</s>" + text_all
+
+                    dialog_dict = {
+                        "text": text_all
+                    }
+                    dialogues.append(dialog_dict)
         
         if len(item["human_label_message"])==0:
             for item_good in item["good_label_message"]:
@@ -37,14 +50,26 @@ def convert_to_formatted_list(file_path):
                 good_label_message = good_label_message.replace('\n\n','\n')
                 good_label_message = good_label_message.replace('\n','\n\n').strip()
                 if len(good_label_message)>0:
-                    all_text =text+ f"<s>Assistant: {good_label_message}\n</s>"
-                    dialog_dict = {
-                        "text": all_text
-                    }
-                    dialogues.append(dialog_dict)
-
-        
-        
+                    if args.split_input_target:
+                        input_text = text+ "<s>Assistant: "
+                        target_text = good_label_message.strip()+'\n</s>'
+                        input_text = input_text[-1526:]
+                        if system_prefix:
+                            input_text =  f"<s>System: {system_prefix}\n</s>" + input_text
+                        dialog_dict = {
+                            "input": input_text,
+                            "target": target_text
+                        }
+                        dialogues.append(dialog_dict)
+                    else:
+                        text_all =text+ f"<s>Assistant: {good_label_message.strip()}\n</s>"
+                        text_all = text_all[-1526:]
+                        if system_prefix:
+                            text_all =  f"<s>System: {system_prefix}\n</s>" + text_all
+                        dialog_dict = {
+                            "text": text_all
+                        }
+                        dialogues.append(dialog_dict)
     return dialogues
 
 
@@ -53,9 +78,13 @@ def convert_list_to_csv(dialogues, csv_file_path):
     df.to_csv(csv_file_path, index=False,quoting=1)
 
 def split_data(num_dev, dialogues):
+    print('一共对话数',len(dialogues))
+
     random.shuffle(dialogues)  # 随机打乱列表顺序
     dialogues_dev = dialogues[:num_dev]  # 前num_dev个作为dev集
     dialogues_train = dialogues[num_dev:]  # 剩下的作为train集
+    print('训练数据量',len(dialogues_train))
+    print('验证数据量',len(dialogues_dev))
     return dialogues_train, dialogues_dev
 
 if __name__ == "__main__":
@@ -69,6 +98,8 @@ if __name__ == "__main__":
                         help="Path to save the dev data")
     parser.add_argument("--num_dev", type=int, default=30,
                         help="The number of dev set")
+    parser.add_argument("--split_input_target",action = 'store_true',
+                        help="need to split input and target in two columns")
     args = parser.parse_args()
     file_path = args.file_path
     training_data_path = args.training_data_path
