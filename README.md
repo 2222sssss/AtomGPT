@@ -231,5 +231,8 @@ print(text)
 
 礼貌地提出问题，构建和谐的讨论社区。
 
+微信讨论群，添加小助理，进去群聊
+![image](https://github.com/AtomEcho/AtomGPT/assets/45086558/bd866c42-d952-4481-87ba-216f3012a283)
+
 
 [![Star History Chart](https://api.star-history.com/svg?repos=AtomEcho/AtomGPT&type=Date)](https://star-history.com/#AtomEcho/AtomGPT&Date)
