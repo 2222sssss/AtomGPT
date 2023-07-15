@@ -155,9 +155,9 @@ python example/atomgpt_chat.py --model_name_or_path AtomEchoAI/AtomGPT_8k_chat_4
 #### 8bit版本
 ```
 from transformers import AutoTokenizer, AutoModelForCausalLM
-model = AutoModelForCausalLM.from_pretrained('AtomEchoAI/AtomGPT_checkpoint_8k_chat',device_map='auto',torch_dtype=torch.float16,load_in_8bit=True)
+model = AutoModelForCausalLM.from_pretrained('AtomEchoAI/AtomGPT_28k',device_map='auto',torch_dtype=torch.float16,load_in_8bit=True)
 model =model.eval()
-tokenizer = AutoTokenizer.from_pretrained('AtomEchoAI/AtomGPT_checkpoint_8k_chat',use_fast=False)
+tokenizer = AutoTokenizer.from_pretrained('AtomEchoAI/AtomGPT_28k',use_fast=False)
 input_ids = tokenizer(['<s>Human: 介绍一下北京\n</s><s>Assistant: '], return_tensors="pt",add_special_tokens=False).input_ids.to('cuda')        
 generate_input = {
     "input_ids":input_ids,
@@ -179,8 +179,8 @@ print(text)
 ```
 from transformers import AutoTokenizer
 from auto_gptq import AutoGPTQForCausalLM
-model = AutoGPTQForCausalLM.from_quantized(args.model_name_or_path, device="cuda:0")
-tokenizer = AutoTokenizer.from_pretrained('AtomEchoAI/AtomGPT_checkpoint_8k_chat',use_fast=False)
+model = AutoGPTQForCausalLM.from_quantized('AtomEchoAI/AtomGPT_28k_chat_4bit', device="cuda:0")
+tokenizer = AutoTokenizer.from_pretrained('AtomEchoAI/AtomGPT_28k_chat_4bit',use_fast=False)
 input_ids = tokenizer(['<s>Human: 介绍一下北京\n</s><s>Assistant: '], return_tensors="pt",add_special_tokens=False).input_ids.to('cuda')        
 generate_input = {
     "input_ids":input_ids,
