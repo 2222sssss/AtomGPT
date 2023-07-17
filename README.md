@@ -138,12 +138,12 @@ AtomGPT_28k_chat_4bit|AtomEchoAI/AtomGPT_28k_chat_4bit|[模型下载](https://hu
 
 基于gradio搭建的问答界面，实现了流式的输出。
 ```
-python example/atomgpt_chat.py --model_name_or_path AtomEchoAI/AtomGPT_checkpoint_8k_chat
+python examples/atomgpt_chat.py --model_name_or_path AtomEchoAI/AtomGPT_checkpoint_8k_chat
 ```
 4bit模型加载如要 --is_4bit
 
 ```
-python example/atomgpt_chat.py --model_name_or_path AtomEchoAI/AtomGPT_8k_chat_4bit --is_4bit
+python examples/atomgpt_chat.py --model_name_or_path AtomEchoAI/AtomGPT_8k_chat_4bit --is_4bit
 ```
 
 ### docker部署问答接口
