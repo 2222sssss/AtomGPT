@@ -83,13 +83,13 @@ AtomGPT基于LLaMA的模型架构，从0开始训练，希望能在训练的过�
 1. 中文数据：
 中文数据作为了预训练的主要数据部分，主要来源有以下几个部分
  | 类型       |  描述 |
-  | ---------- | -------- |
-  | 网络数据   | 由原子回声从互联网上抓取的网络数据，这部分原始数据约100T，挑选出去重后的高质量中文数据，涉及到百科，书籍，博客，新闻，公告，小说，公众号等高质量长文本数据。这部分数据还在清洗更多逐步加入到模型中。 |
-  | [Wikipedia](https://github.com/goldsmith/Wikipedia) | 中文Wikipedia的数据 |
-  | [悟道](https://github.com/BAAI-WuDao/Model)   | 中文悟道开源的200G数据 |
-  | [Clue](https://github.com/CLUEbenchmark/CLUEDatasetSearch)   | Clue开放的中文预训练数据，进行清洗后的高质量中文长文本数据 |
-  | 竞赛数据集 | 近年来中文自然语言处理多任务竞赛数据集，约150个 |
-  | [MNBVC](https://github.com/esbatmop/MNBVC)   | MNBVC 中清洗出来的部分数据集 |
+| ---------- | -------- |
+| 网络数据   | 由原子回声从互联网上抓取的网络数据，这部分原始数据约100T，挑选出去重后的高质量中文数据，涉及到百科，书籍，博客，新闻，公告，小说，公众号等高质量长文本数据。这部分数据还在清洗更多逐步加入到模型中。 |
+| [Wikipedia](https://github.com/goldsmith/Wikipedia) | 中文Wikipedia的数据 |
+| [悟道](https://github.com/BAAI-WuDao/Model)   | 中文悟道开源的200G数据 |
+| [Clue](https://github.com/CLUEbenchmark/CLUEDatasetSearch)   | Clue开放的中文预训练数据，进行清洗后的高质量中文长文本数据 |
+| 竞赛数据集 | 近年来中文自然语言处理多任务竞赛数据集，约150个 |
+| [MNBVC](https://github.com/esbatmop/MNBVC)   | MNBVC 中清洗出来的部分数据集 |
 
 2. 其他语言数据：（以英文为主）
   | 类型       | 描述|
