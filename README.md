@@ -1,6 +1,5 @@
 <h1 align="center">AtomGPT</h1>
 <p align="center" width="100%">
-<img src="./assets/pic.jpeg" alt="Atom" style="width: 15%; display: block; margin: auto;"></a>
 </p>
 
 <h4 align="center">
@@ -42,11 +41,7 @@ AtomGPT基于LLaMA的模型架构，从0开始训练，希望能在训练的过�
 体验地址：[https://grow.atomecho.cn/](https://grow.atomecho.cn/)
 
 <img src="./assets/demo.gif"></img>
-<details><summary><b>Atom</b></summary><img src="./assets/Atom.gif"></img></details>
 
-<details><summary><b>法律顾问</b></summary><img src="./assets/Legal_Advisor.gif"></details>
-
-<details><summary><b>小竹财经</b></summary><img src="./assets/XiaoZhu.gif"></img></details>
 
 ## 🔥最近更新
 
@@ -92,7 +87,7 @@ AtomGPT基于LLaMA的模型架构，从0开始训练，希望能在训练的过�
   | 竞赛数据集 | 近年来中文自然语言处理多任务竞赛数据集，约150个 |
   | [MNBVC](https://github.com/esbatmop/MNBVC)   | MNBVC 中清洗出来的部分数据集 |
 
-3. 其他语言数据：（以英文为主）
+2. 其他语言数据：（以英文为主）
 
 | 类型       | 描述|
   | ---------- | -------- |
@@ -100,7 +95,7 @@ AtomGPT基于LLaMA的模型架构，从0开始训练，希望能在训练的过�
   | openwebtext | 开源网络文本 |
   | c4   | C4 使用了很多 filter 来过滤文本 |
 
-5. 代码数据：
+3. 代码数据：
 为了能够提高模型的代码生成能力，我们添加了🤗开源的大量代码数据集
 
 
@@ -176,12 +171,12 @@ AtomGPT_28k_chat_4bit|AtomEchoAI/AtomGPT_28k_chat_4bit|[模型下载](https://hu
 
 基于gradio搭建的问答界面，实现了流式的输出，将下面代码复制到控制台运行，<font color="#006600">不同模型只需修改一下代码里的模型名称就好了😊</font><br />
 ```
-python examples/atomgpt_chat.py --model_name_or_path AtomEchoAI/AtomGPT_14k
+python examples/atomgpt_chat.py --model_name_or_path AtomEchoAI/AtomGPT_28k
 ```
 如要加载4bit模型，需要在后面加上： <font color="#006600">--is_4bit</font><br />
 
 ```
-python examples/atomgpt_chat.py --model_name_or_path AtomEchoAI/AtomGPT_14k_chat_4bit --is_4bit
+python examples/atomgpt_chat.py --model_name_or_path AtomEchoAI/AtomGPT_28k_chat_4bit --is_4bit
 ```
 
 ### Docker部署问答接口
@@ -193,9 +188,9 @@ python examples/atomgpt_chat.py --model_name_or_path AtomEchoAI/AtomGPT_14k_chat
 #### 8bit版本
 ```
 from transformers import AutoTokenizer, AutoModelForCausalLM
-model = AutoModelForCausalLM.from_pretrained('AtomEchoAI/AtomGPT_14k',device_map='auto',torch_dtype=torch.float16,load_in_8bit=True)
+model = AutoModelForCausalLM.from_pretrained('AtomEchoAI/AtomGPT_28k',device_map='auto',torch_dtype=torch.float16,load_in_8bit=True)
 model =model.eval()
-tokenizer = AutoTokenizer.from_pretrained('AtomEchoAI/AtomGPT_14k',use_fast=False)
+tokenizer = AutoTokenizer.from_pretrained('AtomEchoAI/AtomGPT_28k',use_fast=False)
 input_ids = tokenizer(['<s>Human: 介绍一下北京\n</s><s>Assistant: '], return_tensors="pt",add_special_tokens=False).input_ids.to('cuda')        
 generate_input = {
     "input_ids":input_ids,
@@ -217,8 +212,8 @@ print(text)
 ```
 from transformers import AutoTokenizer
 from auto_gptq import AutoGPTQForCausalLM
-model = AutoGPTQForCausalLM.from_quantized('AtomEchoAI/AtomGPT_14k_chat_4bit', device="cuda:0")
-tokenizer = AutoTokenizer.from_pretrained('AtomEchoAI/AtomGPT_14k_chat_4bit',use_fast=False)
+model = AutoGPTQForCausalLM.from_quantized('AtomEchoAI/AtomGPT_28k_chat_4bit', device="cuda:0")
+tokenizer = AutoTokenizer.from_pretrained('AtomEchoAI/AtomGPT_28k_chat_4bit',use_fast=False)
 input_ids = tokenizer(['<s>Human: 介绍一下北京\n</s><s>Assistant: '], return_tensors="pt",add_special_tokens=False).input_ids.to('cuda')        
 generate_input = {
     "input_ids":input_ids,
@@ -254,7 +249,7 @@ print(text)
 ## ❓常见问题列表
 1. huggingface 上模型下载较慢？
 
-· 我们提供位于中国国内的下载位置：正在准备
+   我们提供位于中国国内的下载位置：正在准备
 
 
 
