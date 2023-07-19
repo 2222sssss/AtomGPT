@@ -1,6 +1,6 @@
 <h1 align="center">AtomGPT</h1>
 <p align="center" width="100%">
-<img src="./assets/pic.jpeg" alt="Tiger" style="width: 15%; display: block; margin: auto;"></a>
+<img src="./assets/pic.jpeg" alt="Atom" style="width: 15%; display: block; margin: auto;"></a>
 </p>
 <h4 align="center">
     <p>
@@ -67,6 +67,7 @@ Data sources include the following aspects:
 
 1. The Chinese data
 The Chinese data is the primary training data for pretraining, which comes from several sources.
+
 | Type       |  Description |
   | ---------- | -------- |
   | Network Data  | The network data captured from the Internet by the atomic echo is about 100T of original data. The high-quality Chinese data selected include encyclopedias, books, blogs, news, announcements, novels, official account and other high-quality long text data. This part of the data is still being cleaned and gradually added to the model. |
@@ -77,6 +78,7 @@ The Chinese data is the primary training data for pretraining, which comes from 
   | [MNBVC](https://github.com/esbatmop/MNBVC)   | Partial dataset cleaned from MNBVC |
 
 2. Other language data (primarily in English)
+   
 | Type       | Description|
   | ---------- | -------- |
   | wiki_en   | Wikipedia - English |
@@ -85,6 +87,7 @@ The Chinese data is the primary training data for pretraining, which comes from 
 
 3. Code data
 To improve the code generation ability of models, we added open-source large amounts of 🤗 data sets
+
 | Type       | 
   | ---------- | 
   | codeparrot/github-code-clean   |  
