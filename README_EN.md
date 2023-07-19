@@ -1,6 +1,5 @@
 <h1 align="center">AtomGPT</h1>
 <p align="center" width="100%">
-<img src="./assets/pic.jpeg" alt="Atom" style="width: 15%; display: block; margin: auto;"></a>
 </p>
 <h4 align="center">
     <p>
@@ -157,12 +156,12 @@ Model | Memory Requirement for Hardware-based Inference
 
 Based on gradio, the interface of question and answer has been implemented with a streaming output<font color="#006600">Just modify the model name in the code for different models😊</font><br />
 ```
-python examples/atomgpt_chat.py --model_name_or_path AtomEchoAI/AtomGPT_14k
+python examples/atomgpt_chat.py --model_name_or_path AtomEchoAI/AtomGPT_28k
 ```
 The 4bit model is loaded as if it’s needed.  <font color="#006600">--is_4bit</font><br />
 
 ```
-python examples/atomgpt_chat.py --model_name_or_path AtomEchoAI/AtomGPT_14k_chat_4bit --is_4bit
+python examples/atomgpt_chat.py --model_name_or_path AtomEchoAI/AtomGPT_28k_chat_4bit --is_4bit
 ```
 
 ### Docker deployment question-answering interface
@@ -173,9 +172,9 @@ Getting ready
 #### 8bit version
 ```
 from transformers import AutoTokenizer, AutoModelForCausalLM
-model = AutoModelForCausalLM.from_pretrained('AtomEchoAI/AtomGPT_14k',device_map='auto',torch_dtype=torch.float16,load_in_8bit=True)
+model = AutoModelForCausalLM.from_pretrained('AtomEchoAI/AtomGPT_28k',device_map='auto',torch_dtype=torch.float16,load_in_8bit=True)
 model =model.eval()
-tokenizer = AutoTokenizer.from_pretrained('AtomEchoAI/AtomGPT_14k',use_fast=False)
+tokenizer = AutoTokenizer.from_pretrained('AtomEchoAI/AtomGPT_28k',use_fast=False)
 input_ids = tokenizer(['<s>Human: 介绍一下北京\n</s><s>Assistant: '], return_tensors="pt",add_special_tokens=False).input_ids.to('cuda')        
 generate_input = {
     "input_ids":input_ids,
@@ -197,8 +196,8 @@ print(text)
 ```
 from transformers import AutoTokenizer
 from auto_gptq import AutoGPTQForCausalLM
-model = AutoGPTQForCausalLM.from_quantized('AtomEchoAI/AtomGPT_14k_chat_4bit', device="cuda:0")
-tokenizer = AutoTokenizer.from_pretrained('AtomEchoAI/AtomGPT_14k_chat_4bit',use_fast=False)
+model = AutoGPTQForCausalLM.from_quantized('AtomEchoAI/AtomGPT_28k_chat_4bit', device="cuda:0")
+tokenizer = AutoTokenizer.from_pretrained('AtomEchoAI/AtomGPT_28k_chat_4bit',use_fast=False)
 input_ids = tokenizer(['<s>Human: 介绍一下北京\n</s><s>Assistant: '], return_tensors="pt",add_special_tokens=False).input_ids.to('cuda')        
 generate_input = {
     "input_ids":input_ids,
@@ -227,7 +226,7 @@ print(text)
 ## ❓Common Problem List
 1. HugginFace downloads slowly？
 
-· We provide a downloading location in China, which is being prepared.
+    We provide a downloading location in China, which is being prepared.
 
 ## ⚠️Limitations
 Although the models on this project have some Chinese understanding and generation capabilities, they also have limitations such as:
