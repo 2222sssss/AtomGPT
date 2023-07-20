@@ -56,6 +56,7 @@ AtomGPT基于LLaMA的模型架构，从0开始训练，希望能在训练的过�
 - 2023.04.28 我们决定了要训练出一个能够与ChatGPT能力接近的中文大模型。
 
 ### 预训练模型更新
+- 2023.07.19 开放出预训练第56000步的模型
 - 2023.07.05 开放出预训练第28000步的模型
 - 2023.06.14 开放出预训练第14000步的模型
 - 2023.06.01 开放出预训练第8000步的模型
@@ -125,6 +126,8 @@ AtomGPT预训练模型使用transformers 直接加载就可以，下面8k表示�
 AtomGPT_8k|AtomEchoAI/AtomGPT_8k|[模型下载](https://huggingface.co/AtomEchoAI/AtomGPT_8k)
 AtomGPT_14k|AtomEchoAI/AtomGPT_14k|[模型下载](https://huggingface.co/AtomEchoAI/AtomGPT_14k)
 AtomGPT_28k|AtomEchoAI/AtomGPT_28k|[模型下载](https://huggingface.co/AtomEchoAI/AtomGPT_28k)
+AtomGPT_56k|AtomEchoAI/AtomGPT_56k|[模型下载](https://huggingface.co/AtomEchoAI/AtomGPT_56k)
+
 
 ### Chat模型
 AtomGPT-chat模型需要使用transformers进行加载。4bit压缩版本模型需要使用[AutoGPTQ](https://github.com/PanQiWei/AutoGPTQ/blob/main/README_zh.md)进行加载
