@@ -37,6 +37,17 @@ An online test portal has been provided, click on the right upper corner to expe
 Experience Address: [https://grow.atomecho.cn/](https://grow.atomecho.cn/)
 
 <img src="./assets/demo.gif"></img>
+<details><summary><b>Codability</b></summary><img src="./assets/code.gif"></img></details>
+
+<details><summary><b>Simple Mathematics</b></summary><img src="./assets/math.gif"></details>
+
+<details><summary><b>Popular comments</b></summary><img src="./assets/comment.gif"></img></details>
+
+<details><summary><b>Self-awareness</b></summary><img src="./assets/self-awareness.gif"></details>
+
+<details><summary><b>Travel recommendations</b></summary><img src="./assets/travel.gif"></details>
+
+<details><summary><b>Writing outline</b></summary><img src="./assets/outline.gif"></details>
 
 ## 🔥Recent Updates
 
