@@ -42,6 +42,17 @@ AtomGPT基于LLaMA的模型架构，从0开始训练，希望能在训练的过�
 
 <img src="./assets/demo.gif"></img>
 
+<details><summary><b>代码能力</b></summary><img src="./assets/code.gif"></img></details>
+
+<details><summary><b>简单数学</b></summary><img src="./assets/math.gif"></details>
+
+<details><summary><b>热门评论</b></summary><img src="./assets/comment.gif"></img></details>
+
+<details><summary><b>自我认知</b></summary><img src="./assets/self-awareness.gif"></details>
+
+<details><summary><b>旅游推荐</b></summary><img src="./assets/travel.gif"></details>
+
+<details><summary><b>写作提纲</b></summary><img src="./assets/outline.gif"></details>
 
 ## 最近更新
 
