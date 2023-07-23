@@ -25,10 +25,9 @@ class AtomGPT(LLM):
     def _llm_type(self) -> str:
         return "AtomGPT"
 
-    def _call(self, prompt: str, stop: Optional[List[str]] = None) -> str:
+    def __call__(self, prompt: str, stop: Optional[List[str]] = None) -> str:
         print('prompt:',prompt)
         input_ids = self.tokenizer(prompt, return_tensors="pt",add_special_tokens=False).input_ids.to('cuda')
-        print(input_ids.shape)
         generate_input = {
             "input_ids":input_ids,
             "max_new_tokens":1024,
