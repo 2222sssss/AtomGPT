@@ -10,7 +10,7 @@ import time
 app = FastAPI()
 # message ： [{'role':'Human','content':'介绍一下你自己'},{'role':'Assistant','content':'我是AtomGPT'}]
 class InputData(BaseModel):
-    messages: list[dict]
+    messages: list
     temperature: float
     top_p:float
 
@@ -18,7 +18,7 @@ class InputData(BaseModel):
 def setup():
     global model
     global tokenizer
-    model_name_or_path = ''
+    model_name_or_path = 'AtomEchoAI/AtomGPT_14k_chat_4bit'
     tokenizer = AutoTokenizer.from_pretrained(model_name_or_path,use_fast=False)
     is_4bit = True
     if is_4bit==False:
