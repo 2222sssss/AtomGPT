@@ -150,6 +150,7 @@ AtomGPT_8k_chat|AtomEchoAI/AtomGPT_8k_chat|[模型下载](https://huggingface.co
 AtomGPT_8k_chat_4bit|AtomEchoAI/AtomGPT_8k_chat_4bit|[模型下载](https://huggingface.co/AtomEchoAI/AtomGPT_8k_chat_4bit)
 AtomGPT_14k_chat_4bit|AtomEchoAI/AtomGPT_14k_chat_4bit|[模型下载](https://huggingface.co/AtomEchoAI/AtomGPT_14k_chat_4bit)
 AtomGPT_28k_chat_4bit|AtomEchoAI/AtomGPT_28k_chat_4bit|[模型下载](https://huggingface.co/AtomEchoAI/AtomGPT_28k_chat_4bit)
+AtomGPT_56k_chat_4bit|AtomEchoAI/AtomGPT_56k_chat_4bit|[模型下载](https://huggingface.co/AtomEchoAI/AtomGPT_56k_chat_4bit)
 
 ## 模型微调
 
