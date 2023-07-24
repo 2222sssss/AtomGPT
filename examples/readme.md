@@ -18,7 +18,7 @@ pip install bitsandbytes==0.39.0
 ## conda常用命令
 ```
 # 创建虚拟环境(name是自己起的环境名字)
-conda create -n name python==3.7
+conda create -n name python==3.10
 # 激活环境
 conda activate name
 # 退出环境
@@ -69,7 +69,7 @@ response = answer_from_web('北京在哪？',llm)
 ```
 此代码模块的功能是先在网上搜索你所提问的相关信息，将文本保留在context中，然后调用atomgpt_for_langchain文件中的_call方法，AtomGPT会根据网上搜索到的context给出你提问的答案。
 
-代码是从外网搜索的context
+代码是从duckduckgo搜索引擎搜索的context
 ```
 from duckduckgo_search import ddg
 ```
@@ -87,18 +87,19 @@ api接口
 uvicorn examples.gunicorn_atomgpt_server:app --reload
 ```
 
-可在控制台输入下面格式的命令：
+新建一个控制台输入下面格式的命令：
 
 ```
-curl http://127.0.0.1:8000/atomgpt_chat/ -X POST -H "Content-Type: application/json" --data '[{"content": [{'role':'Human','content':'介绍一下你自己'},{'role':'Assistant','content':'我是AtomGPT'}],"temperature":0.5,"top_p":0.5}]'
+curl http://127.0.0.1:8000/atomgpt_chat/ -X POST -H "Content-Type: application/json" --data '{"messages": [{"role":"Human","content":"介绍一下你自己"}],"temperature":0.5,"top_p":0.95}'
 ```
 
-格式遵循下面的代码：
+格式参照下面的代码：
 ```
-# message ： [{'role':'Human','content':'介绍一下你自己'},{'role':'Assistant','content':'我是AtomGPT'}]
+# messages ： [{'role':'Human','content':'介绍一下你自己'},{'role':'Assistant','content':'我是AtomGPT'}]
 class InputData(BaseModel):
     messages: list
     temperature: float
     top_p:float
 
 ```
+当messages列表最后一个'role'是'Human'的时候就轮到AtomGPT说话了，反之是用户说话
