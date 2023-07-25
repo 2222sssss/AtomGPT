@@ -149,7 +149,7 @@ AtomGPT-chat模型需要使用transformers进行加载。4bit压缩版本模型�
 AtomGPT_8k_chat_4bit|AtomEchoAI/AtomGPT_8k_chat_4bit|[模型下载](https://huggingface.co/AtomEchoAI/AtomGPT_8k_chat_4bit)
 AtomGPT_14k_chat_4bit|AtomEchoAI/AtomGPT_14k_chat_4bit|[模型下载](https://huggingface.co/AtomEchoAI/AtomGPT_14k_chat_4bit)
 AtomGPT_28k_chat_4bit|AtomEchoAI/AtomGPT_28k_chat_4bit|[模型下载](https://huggingface.co/AtomEchoAI/AtomGPT_28k_chat_4bit)
-AtomGPT_56k_chat_4bit|AtomEchoAI/AtomGPT_56k_chat_4bit|[模型下载(量化后效果下降较多，正在重新量化)](https://huggingface.co/AtomEchoAI/AtomGPT_56k_chat_4bit)
+AtomGPT_56k_chat_4bit|AtomEchoAI/AtomGPT_56k_chat_4bit|[模型下载](https://huggingface.co/AtomEchoAI/AtomGPT_56k_chat_4bit)
 
 ## 模型微调
 
